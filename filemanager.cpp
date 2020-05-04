@@ -2,7 +2,7 @@
 
 FileManager::FileManager()
 {
-    connect(&timer_, SIGNAL(timeout()), this, SLOT(updateTime()));
+    connect(&timer_, SIGNAL(timeout()), this, SLOT(checkFileChange()));
     timer_.start(1000);
 }
 
@@ -62,7 +62,7 @@ void FileManager::fileInformationUpdate(int i)
     }
 }
 
-void FileManager::updateTime()
+void FileManager::checkFileChange()
 {
 
     for(int i=0; i<listFile_.size(); i++){

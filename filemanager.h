@@ -34,7 +34,7 @@ public:
     int returnFileSize(int);
 
 public slots:
-void updateTime();
+void checkFileChange();
 
 signals:
 void changeWatcher(QString name, int length_, bool existence);
