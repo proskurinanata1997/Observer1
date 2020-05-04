@@ -6,49 +6,34 @@ FileManager::FileManager()
     timer_.start(1000);
 }
 
-int FileManager::findFile(QString name)
+void FileManager::addFile(QString name)
 {
-    for(int i=0; i<listFile_.size(); i++)
-        if(listFile_[i].fileName()==name)
-            return i;
-    return -1;
+    if (findFile(name)<0){
+        QFileInfo f(name);
+        listFile_.append(f);
+        length_.append(returnFileSize(listFile_.size()-1));
+    }
 }
 
 void FileManager::deleteFile(QString name)
 {
-    int index_del=this->findFile(name);
-    if (index_del==-1) return;
-    listFile_.removeAt(index_del);
-    length_.removeAt(index_del);
+    int indexDelete=findFile(name);
+    if (indexDelete < 0) return;
+    listFile_.removeAt(indexDelete);
+    length_.removeAt(indexDelete);
 }
 
-void FileManager::addFile(QString name)
+void FileManager::deleteFile(int i)
 {
-    listFile_.append(QFileInfo(name));
-    if (QFileInfo(name).exists())
-        length_.append(QFileInfo(name).size());
-    else
-        length_.append(-1);
+    if (i < 0) return;
+    listFile_.removeAt(i);
+    length_.removeAt(i);
 }
 
-void FileManager::updateTime()
+int FileManager::findFile(QString name)
 {
-
-    for(int i=0; i<listFile_.size(); i++){
-        listFile_[i].refresh();
-        if ((listFile_[i].size())!=length_[i])
-            changeIndex(i);
-    }
-}
-
-void FileManager::changeIndex(int i)
-{
-    QString name = listFile_[i].absoluteFilePath();
-    if (listFile_[i].exists())
-        length_[i] = listFile_[i].size();
-    else
-        length_[i]=-1;
-    emit changegWatcher(name, length_[i], listFile_[i].exists());
+    QFileInfo f(name);
+    return FileManager::getNameList().indexOf(f.absoluteFilePath());
 }
 
 void FileManager::updateAll()
@@ -57,4 +42,43 @@ void FileManager::updateAll()
         changeIndex(i);
 }
 
+
+int FileManager::returnFileSize(int i)
+{
+    listFile_[i].refresh();
+    if (listFile_[i].exists())
+        return (listFile_[i].size());
+    else
+        return (-1);
+}
+
+void FileManager::changeIndex(int i)
+{
+    if (i >= 0)
+    {
+        QString name = listFile_[i].absoluteFilePath();
+        length_[i]=returnFileSize(i);
+        emit changegWatcher(name, length_[i], listFile_[i].exists());
+    }
+}
+
+void FileManager::updateTime()
+{
+
+    for(int i=0; i<listFile_.size(); i++){
+        if (length_[i]!=returnFileSize(i))
+            changeIndex(i);
+    }
+}
+
+QStringList FileManager::getNameList()
+{
+    QStringList nameList;
+    for(int i=0; i<listFile_.size(); i++)
+            nameList.append(listFile_[i].absoluteFilePath()/* + QString::number(state[i])*/);
+    return nameList;
+}
+
 FileManager *FileManager::instance = 0;
+
+

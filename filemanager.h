@@ -26,13 +26,18 @@ public:
 
     void addFile(QString);
     void deleteFile(QString);
+    void deleteFile(int);
     int findFile(QString);
     void changeIndex(int);
     void updateAll();
+    QStringList getNameList();
+    int returnFileSize(int);
+
 public slots:
-    void updateTime();
+void updateTime();
+
 signals:
-    void changegWatcher(QString name, int length_, bool existence);
+void changegWatcher(QString name, int length_, bool existence);
 };
 
 #endif // FILEMANAGER_H
