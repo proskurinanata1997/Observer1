@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>522</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>206</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QLabel" name="labelManager">
+      <property name="text">
+       <string>FileManager</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="4">
+     <widget class="QListWidget" name="listWidgetManager"/>
+    </item>
+    <item row="4" column="1" colspan="2">
+     <widget class="QLabel" name="labelWatcher">
+      <property name="text">
+       <string>FileWatcher</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="4">
+     <widget class="QLineEdit" name="lineEditWatcher"/>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>205</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0" colspan="4">
+     <widget class="QLineEdit" name="lineEditManager"/>
+    </item>
+    <item row="2" column="2" colspan="2">
+     <widget class="QPushButton" name="deleteManager">
+      <property name="text">
+       <string>DeleteFile</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>205</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="6" column="1" colspan="2">
+     <widget class="QPushButton" name="deleteWatcher">
+      <property name="text">
+       <string>DeleteFile</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QPushButton" name="renameWatcher">
+      <property name="text">
+       <string>RenameFile</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="4">
+     <widget class="QListWidget" name="listWidgetWatcher"/>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QPushButton" name="addManager">
+      <property name="text">
+       <string>AddFile</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>206</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="addWatcher">
+      <property name="text">
+       <string>AddFile</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>522</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>addManager</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addFileManager()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deleteManager</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>deleteFileManager()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>368</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addWatcher</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addFileWatcher()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>387</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameWatcher</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>renameWatcher()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>273</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>deleteWatcher</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>deleteFileWatcher()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>273</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>213</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addFileManager()</slot>
+  <slot>deleteFileManager()</slot>
+  <slot>addFileWatcher()</slot>
+  <slot>deleteFileWatcher()</slot>
+  <slot>renameWatcher()</slot>
+  <slot>slot2()</slot>
+ </slots>
+</ui>
