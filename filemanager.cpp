@@ -58,7 +58,7 @@ void FileManager::fileInformationUpdate(int i)
     {
         QString name = listFile_[i].absoluteFilePath();
         length_[i]=returnFileSize(i);
-        emit changegWatcher(name, length_[i], listFile_[i].exists());
+        emit changeWatcher(name, length_[i], listFile_[i].exists());
     }
 }
 
