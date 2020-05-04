@@ -34,7 +34,7 @@ void MainWindow::addFileInWatcher()
     {
         listWatcher.append(FileWatcher(ui->lineEditWatcher->text()));
         QObject :: connect(FileManager::getInstance(), &FileManager::changegWatcher, &(listWatcher.last()), &FileWatcher::change);
-        FileManager::getInstance()->changeIndex(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
+        FileManager::getInstance()->fileInformationUpdate(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
         //FManager::getInstance()->updateAll();
         updateWatcherList();
         QObject :: connect(&(listWatcher.last()), &FileWatcher::updateSignal, this, &MainWindow::updateWatcherList);
@@ -60,7 +60,7 @@ void MainWindow::renameWatcher()
     int i=ui->listWidgetWatcher->currentRow();
     if (i>=0 && !(ui->lineEditWatcher->text()).isEmpty())
     listWatcher[i].renameFile(ui->lineEditWatcher->text());
-    FileManager::getInstance()->changeIndex(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
+    FileManager::getInstance()->fileInformationUpdate(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
     updateWatcherList();
 }
 
