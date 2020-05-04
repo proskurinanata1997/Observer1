@@ -28,7 +28,7 @@ public:
     void deleteFile(QString);
     void deleteFile(int);
     int findFile(QString);
-    void changeIndex(int);
+    void fileInformationUpdate(int);
     void updateAll();
     QStringList getNameList();
     int returnFileSize(int);

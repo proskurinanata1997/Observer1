@@ -39,7 +39,7 @@ int FileManager::findFile(QString name)
 void FileManager::updateAll()
 {
     for(int i=0; i<listFile_.size();i++)
-        changeIndex(i);
+        fileInformationUpdate(i);
 }
 
 
@@ -52,7 +52,7 @@ int FileManager::returnFileSize(int i)
         return (-1);
 }
 
-void FileManager::changeIndex(int i)
+void FileManager::fileInformationUpdate(int i)
 {
     if (i >= 0)
     {
@@ -67,7 +67,7 @@ void FileManager::updateTime()
 
     for(int i=0; i<listFile_.size(); i++){
         if (length_[i]!=returnFileSize(i))
-            changeIndex(i);
+            fileInformationUpdate(i);
     }
 }
 
