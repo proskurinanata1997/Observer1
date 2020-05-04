@@ -23,7 +23,7 @@ void MainWindow::addFileInManager()
         for(int i=0; i<listWatcher.size();i++)
         {
             if(listWatcher[i].getNameFile()==file.absoluteFilePath())
-                listWatcher[i].change(file.absoluteFilePath(), file.size(),file.exists());
+                listWatcher[i].changeStateWatcher(file.absoluteFilePath(), file.size(),file.exists());
         }
     }
 }
@@ -33,9 +33,8 @@ void MainWindow::addFileInWatcher()
     if (!((ui->lineEditWatcher->text()).isEmpty()))
     {
         listWatcher.append(FileWatcher(ui->lineEditWatcher->text()));
-        QObject :: connect(FileManager::getInstance(), &FileManager::changegWatcher, &(listWatcher.last()), &FileWatcher::change);
+        QObject :: connect(FileManager::getInstance(), &FileManager::changegWatcher, &(listWatcher.last()), &FileWatcher::changeStateWatcher);
         FileManager::getInstance()->fileInformationUpdate(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
-        //FManager::getInstance()->updateAll();
         updateWatcherList();
         QObject :: connect(&(listWatcher.last()), &FileWatcher::updateSignal, this, &MainWindow::updateWatcherList);
     }
