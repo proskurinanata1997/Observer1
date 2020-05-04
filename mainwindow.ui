@@ -148,11 +148,11 @@
    <sender>addManager</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>addFileManager()</slot>
+   <slot>addFileInManager()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>209</x>
-     <y>105</y>
+     <x>218</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>105</x>
@@ -164,7 +164,7 @@
    <sender>deleteManager</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>deleteFileManager()</slot>
+   <slot>deleteFileFromManager()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>353</x>
@@ -180,7 +180,7 @@
    <sender>addWatcher</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>addFileWatcher()</slot>
+   <slot>addFileInWatcher()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>158</x>
@@ -212,7 +212,7 @@
    <sender>deleteWatcher</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>deleteFileWatcher()</slot>
+   <slot>deleteFileFromWatcher()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>257</x>
@@ -226,10 +226,10 @@
   </connection>
  </connections>
  <slots>
-  <slot>addFileManager()</slot>
-  <slot>deleteFileManager()</slot>
-  <slot>addFileWatcher()</slot>
-  <slot>deleteFileWatcher()</slot>
+  <slot>addFileInManager()</slot>
+  <slot>deleteFileFromManager()</slot>
+  <slot>addFileInWatcher()</slot>
+  <slot>deleteFileFromWatcher()</slot>
   <slot>renameWatcher()</slot>
   <slot>slot2()</slot>
  </slots>

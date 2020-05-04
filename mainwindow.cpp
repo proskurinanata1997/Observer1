@@ -13,7 +13,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::addFileManager()
+void MainWindow::addFileInManager()
 {
     if (!((ui->lineEditManager->text()).isEmpty()))
     {
@@ -28,7 +28,7 @@ void MainWindow::addFileManager()
     }
 }
 
-void MainWindow::addFileWatcher()
+void MainWindow::addFileInWatcher()
 {
     if (!((ui->lineEditWatcher->text()).isEmpty()))
     {
@@ -36,23 +36,23 @@ void MainWindow::addFileWatcher()
         QObject :: connect(FileManager::getInstance(), &FileManager::changegWatcher, &(listWatcher.last()), &FileWatcher::change);
         FileManager::getInstance()->changeIndex(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
         //FManager::getInstance()->updateAll();
-        updateWatcher();
-        QObject :: connect(&(listWatcher.last()), &FileWatcher::updateSignal, this, &MainWindow::updateWatcher);
+        updateWatcherList();
+        QObject :: connect(&(listWatcher.last()), &FileWatcher::updateSignal, this, &MainWindow::updateWatcherList);
     }
 }
 
-void MainWindow::deleteFileManager()
+void MainWindow::deleteFileFromManager()
 {
     int i=ui->listWidgetManager->currentRow();
     FileManager::getInstance()->deleteFile(i);
     updateManager();
 }
 
-void MainWindow::deleteFileWatcher()
+void MainWindow::deleteFileFromWatcher()
 {
     int i=ui->listWidgetWatcher->currentRow();
     listWatcher.removeAt(i);
-    updateWatcher();
+    updateWatcherList();
 }
 
 void MainWindow::renameWatcher()
@@ -61,7 +61,7 @@ void MainWindow::renameWatcher()
     if (i>=0 && !(ui->lineEditWatcher->text()).isEmpty())
     listWatcher[i].renameFile(ui->lineEditWatcher->text());
     FileManager::getInstance()->changeIndex(FileManager::getInstance()->findFile(ui->lineEditWatcher->text()));
-    updateWatcher();
+    updateWatcherList();
 }
 
 void MainWindow::updateManager()
@@ -70,7 +70,7 @@ void MainWindow::updateManager()
     ui->listWidgetManager->addItems(FileManager::getInstance()->getNameList());
 }
 
-void MainWindow::updateWatcher()
+void MainWindow::updateWatcherList()
 {
     int i = ui->listWidgetWatcher->currentRow();
     ui->listWidgetWatcher->clear();

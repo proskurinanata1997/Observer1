@@ -21,11 +21,11 @@ private:
     QList<FileWatcher> listWatcher;
 
 public slots:
-    void addFileManager();
-    void addFileWatcher();
-    void deleteFileManager();
-    void deleteFileWatcher();
-    void updateWatcher();
+    void addFileInManager();
+    void addFileInWatcher();
+    void deleteFileFromManager();
+    void deleteFileFromWatcher();
+    void updateWatcherList();
     void renameWatcher();
 
 };
