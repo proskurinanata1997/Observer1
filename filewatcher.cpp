@@ -29,7 +29,7 @@ QString FileWatcher::outputWatcher()
     return print;
 }
 
-void FileWatcher::change(QString name, int length, bool existence)
+void FileWatcher::changeStateWatcher(QString name, int length, bool existence)
 {
     if (name==fileName_)
     {

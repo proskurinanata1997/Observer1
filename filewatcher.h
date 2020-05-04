@@ -24,7 +24,7 @@ public:
     QString getNameFile();
 public slots:
 
-void change(QString name, int length_, bool existence);
+void changeStateWatcher(QString name, int length_, bool existence);
 
 signals:
     void updateSignal();
