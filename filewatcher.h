@@ -13,19 +13,22 @@ class FileWatcher: public QObject
     QString fileName_;
     int length_;
     bool existFile_;
-
 public:
     FileWatcher(QString);
     FileWatcher();
+    QString outputWatcher();
+    void renameFile(QString);
     FileWatcher(const FileWatcher &another);
     FileWatcher &operator=(const FileWatcher &another);
-    QString outputWatcher();
-    void changeFile(const char*);
-    ~FileWatcher(){}
-
+   ~FileWatcher(){}
+    QString getNameFile();
 public slots:
 
-    void change(QString name, int length_, bool existence);
+void change(QString name, int length_, bool existence);
+
+signals:
+    void updateSignal();
 };
 
-#endif // FILEWATCHER_H
+#endif
+// FILEWATCHER_H

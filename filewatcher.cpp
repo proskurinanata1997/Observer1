@@ -3,13 +3,8 @@
 FileWatcher::FileWatcher(QString name)
 {
     fileName_=name;
-}
-
-FileWatcher::FileWatcher()
-{
-    fileName_="";
     length_=-1;
-    existFile_=false;
+    existFile_=0;
 }
 
 FileWatcher::FileWatcher(const FileWatcher &another)
@@ -19,17 +14,19 @@ FileWatcher::FileWatcher(const FileWatcher &another)
     existFile_=another.existFile_;
 }
 
+FileWatcher::FileWatcher()
+{
+    fileName_="";
+    length_=-1;
+    existFile_=false;
+}
+
 QString FileWatcher::outputWatcher()
 {
     cout<<"\n";
     QString print("\nname: ");
-   print += fileName_ + QString("\nsize:") + QString::number(length_) + QString("\nexistence: ") + QString::number(existFile_);
+    print += fileName_ + QString("\nsize:") + QString::number(length_) + QString("\nexistence: ") + QString::number(existFile_);
     return print;
-}
-
-void FileWatcher::changeFile(const char *newName)
-{
-  fileName_=newName;
 }
 
 void FileWatcher::change(QString name, int length, bool existence)
@@ -39,8 +36,18 @@ void FileWatcher::change(QString name, int length, bool existence)
         if (existence)
             length_=length;
         else
-            length_=0;
+            length=0;
         existFile_=existence;
+        emit updateSignal();
     }
 }
 
+void FileWatcher::renameFile(QString newName)
+{
+    fileName_ = newName;
+}
+
+QString FileWatcher::getNameFile()
+{
+    return fileName_;
+}
